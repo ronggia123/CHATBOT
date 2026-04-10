@@ -6,24 +6,84 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
         * { box-sizing: border-box; margin: 0; padding: 0; }
-        body { font-family: 'Segoe UI', sans-serif; background: #f0f2f5; display: flex; justify-content: center; align-items: center; height: 100vh; }
-        #chat-window { width: 400px; height: 600px; background: white; border-radius: 15px; display: flex; flex-direction: column; box-shadow: 0 10px 25px rgba(0,0,0,0.1); overflow: hidden; }
+
+        body { 
+            font-family: 'Segoe UI', sans-serif; 
+            /* Thêm ảnh nền và căn giữa nội dung */
+            background-image: url('https://vlu.edu.vn/images/slider/Slider-VLU-7.jpg'); 
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            display: flex; 
+            justify-content: center; 
+            align-items: center; 
+            height: 100vh; 
+            position: relative;
+        }
+
+        /* Lớp phủ để làm nền tối lại, nổi bật khung chat */
+        body::before {
+            content: "";
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: rgba(0, 0, 0, 0.4);
+            z-index: 0;
+        }
+
+        /* CSS cho nút Trang chủ ở góc trái */
+        #home-link {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 18px;
+            z-index: 10;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: 0.3s;
+        }
+        #home-link:hover { color: #ffc107; }
+
+        #chat-window { 
+            width: 400px; 
+            height: 600px; 
+            background: white; 
+            border-radius: 15px; 
+            display: flex; 
+            flex-direction: column; 
+            box-shadow: 0 10px 25px rgba(0,0,0,0.3); 
+            overflow: hidden; 
+            z-index: 1; /* Nằm trên lớp phủ nền */
+        }
+
         #header { background: #007bff; color: white; padding: 15px; font-weight: bold; }
         #chat-content { flex: 1; padding: 15px; overflow-y: auto; background: #f9f9f9; display: flex; flex-direction: column; }
-        .msg { margin-bottom: 12px; padding: 10px 15px; border-radius: 15px; font-size: 14px; max-width: 80%; line-height: 1.4; }
-        .bot { background: #e9ecef; align-self: flex-start; color: #333; }
-        .user { background: #007bff; color: white; align-self: flex-end; }
+        
+        .msg { margin-bottom: 12px; padding: 10px 15px; border-radius: 15px; font-size: 14px; max-width: 80%; line-height: 1.4; word-wrap: break-word; }
+        .bot { background: #e9ecef; align-self: flex-start; color: #333; border-bottom-left-radius: 2px; }
+        .user { background: #007bff; color: white; align-self: flex-end; border-bottom-right-radius: 2px; }
+
         /* Style link "Tại đây" màu đỏ gạch chân */
         .link-style { color: #b01116; font-weight: bold; text-decoration: underline; display: block; margin-top: 5px; }
+
         /* Vùng nút gợi ý */
         #suggestion-area { padding: 10px; background: white; border-top: 1px solid #eee; display: flex; gap: 8px; flex-wrap: wrap; }
         .s-btn { border: 1px solid #007bff; color: #007bff; background: white; padding: 6px 12px; border-radius: 20px; cursor: pointer; font-size: 12px; transition: 0.2s; }
         .s-btn:hover { background: #007bff; color: white; }
-        #input-area { padding: 15px; border-top: 1px solid #eee; display: flex; }
-        input { flex: 1; border: 1px solid #ddd; border-radius: 20px; padding: 10px 15px; outline: none; }
+
+        #input-area { padding: 15px; border-top: 1px solid #eee; background: white; display: flex; align-items: center; }
+        input { flex: 1; border: 1px solid #ddd; border-radius: 20px; padding: 10px 15px; outline: none; font-size: 14px; }
+        input:focus { border-color: #007bff; }
     </style>
 </head>
 <body>
+
+<a href="https://www.vlu.edu.vn/" id="home-link">
+    <i class="fas fa-home"></i> Trang chủ
+</a>
 
 <div id="chat-window">
     <div id="header"><i class="fas fa-graduation-cap"></i> Hỗ trợ sinh viên VLU</div>
@@ -50,8 +110,10 @@
         const text = input.value.trim();
         if(!text) return;
 
+        // Hiện tin nhắn người dùng
         box.innerHTML += `<div class="msg user">${text}</div>`;
         input.value = '';
+        box.scrollTop = box.scrollHeight;
 
         try {
             const res = await fetch('/chat', {
@@ -61,7 +123,7 @@
             });
             const data = await res.json();
 
-            // Hiển thị text kèm link "Tại đây" nếu có
+            // Hiển thị kết quả từ server (phải dùng data.text)
             let botMsg = `<div class="msg bot">${data.text}`;
             if(data.link) {
                 botMsg += `<a href="${data.link}" target="_blank" class="link-style">Tại đây</a>`;
@@ -70,7 +132,10 @@
             
             box.innerHTML += botMsg;
             box.scrollTop = box.scrollHeight;
-        } catch (e) { console.error(e); }
+        } catch (e) { 
+            console.error("Lỗi kết nối server:", e);
+            box.innerHTML += `<div class="msg bot">Rất tiếc, tôi đang gặp sự cố kết nối.</div>`;
+        }
     }
 
     function quickAction(phrase) {
@@ -80,5 +145,6 @@
 
     input.addEventListener('keypress', (e) => { if(e.key === 'Enter') sendMsg(); });
 </script>
+
 </body>
 </html>
