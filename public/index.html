@@ -10,7 +10,7 @@
         body { 
             font-family: 'Segoe UI', sans-serif; 
             /* Thêm ảnh nền và căn giữa nội dung */
-            background-image: url('https://vlu.edu.vn/images/slider/Slider-VLU-7.jpg'); 
+            background-image: url('https://upload.wikimedia.org/wikipedia/commons/1/1c/VLU_Campus.webp'); 
             background-size: cover;
             background-position: center;
             background-attachment: fixed;
@@ -77,6 +77,15 @@
         #input-area { padding: 15px; border-top: 1px solid #eee; background: white; display: flex; align-items: center; }
         input { flex: 1; border: 1px solid #ddd; border-radius: 20px; padding: 10px 15px; outline: none; font-size: 14px; }
         input:focus { border-color: #007bff; }
+        /* Định vị Logo Văn Lang ở góc phải */
+#vlu-logo {
+    position: absolute;
+    top: 15px;      /* Khoảng cách từ trên xuống */
+    right: 20px;    /* Khoảng cách từ phải sang */
+    height: 60px;   /* Độ cao logo (bạn có thể chỉnh to nhỏ ở đây) */
+    z-index: 10;    /* Hiển thị trên cùng */
+    filter: drop-shadow(0 2px 4px rgba(0,0,0,0.3)); /* Đổ bóng cho rõ */
+}
     </style>
 </head>
 <body>
@@ -84,6 +93,7 @@
 <a href="https://www.vlu.edu.vn/" id="home-link">
     <i class="fas fa-home"></i> Trang chủ
 </a>
+<img src="https://cdn.haitrieu.com/wp-content/uploads/2022/12/Logo-Dai-Hoc-Van-Lang-H.png" alt="VLU Logo" id="vlu-logo">
 
 <div id="chat-window">
     <div id="header"><i class="fas fa-graduation-cap"></i> Hỗ trợ sinh viên VLU</div>
