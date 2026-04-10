@@ -1,0 +1,44 @@
+[
+  {
+    "keywords": ["tín chỉ", "bao nhiêu tín chỉ", "số tín chỉ", "đăng ký tối đa"],
+    "answer": "Sinh viên được đăng ký tối đa 20 tín chỉ trong một học kỳ chính. Xem chi tiết tại:",
+    "link": "https://online.vlu.edu.vn/Home/StudyPrograms"
+  },
+  {
+    "keywords": ["đăng ký môn", "đăng ký học phần", "chọn môn", "đăng ký môn học"],
+    "answer": "Bạn đăng nhập vào cổng sinh viên và chọn mục 'Đăng ký môn học' để thực hiện:",
+    "link": "https://regist.vlu.edu.vn/"
+  },
+  {
+    "keywords": ["lịch học", "thời khóa biểu", "tkb", "xem lịch học"],
+    "answer": "Bạn có thể xem lịch học trong mục 'Thời khóa biểu' trên hệ thống sinh viên:",
+    "link": "https://online.vlu.edu.vn/Home/Schedules"
+  },
+  {
+    "keywords": ["học phí", "đóng học phí", "tiền học", "xem học phí"],
+    "answer": "Bạn kiểm tra học phí trong mục 'Tài chính' hoặc 'Học phí' trên cổng sinh viên:",
+    "link": "http://e-bills.vn/pay/vlu"
+  },
+  {
+    "keywords": ["quên mật khẩu", "mất mật khẩu", "reset mật khẩu"],
+    "answer": "Bạn chọn 'Quên mật khẩu' trên trang đăng nhập hoặc liên hệ phòng CNTT để được hỗ trợ:",
+    "link": "https://www.vlu.edu.vn/"
+  },
+  {
+    "keywords": ["tài khoản sinh viên", "đăng nhập", "account", "mã sinh viên"],
+    "answer": "Tài khoản sinh viên thường là mã số sinh viên và mật khẩu được cấp khi nhập học.",
+    "link": null
+  },
+  {
+    "keywords": ["điểm", "xem điểm", "kết quả học tập", "điểm thi"],
+    "answer": "Bạn xem điểm tại mục 'Kết quả học tập' trên cổng sinh viên:",
+    "link": "https://online.vlu.edu.vn/Home/Marks"
+  },
+  {
+    "keywords": ["xin chào", "hello", "hi", "chào"],
+    "answer": "Xin chào 👋 Tôi là chatbot hỗ trợ sinh viên Văn Lang. Bạn cần hỏi gì hôm nay?",
+    "link": null
+  }
+  
+
+]
