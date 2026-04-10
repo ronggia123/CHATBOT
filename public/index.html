@@ -59,24 +59,24 @@
             z-index: 1; /* Nằm trên lớp phủ nền */
         }
 
-        #header { background: #007bff; color: white; padding: 15px; font-weight: bold; }
+        #header { background: #f70606; color: white; padding: 15px; font-weight: bold; }
         #chat-content { flex: 1; padding: 15px; overflow-y: auto; background: #f9f9f9; display: flex; flex-direction: column; }
         
         .msg { margin-bottom: 12px; padding: 10px 15px; border-radius: 15px; font-size: 14px; max-width: 80%; line-height: 1.4; word-wrap: break-word; }
         .bot { background: #e9ecef; align-self: flex-start; color: #333; border-bottom-left-radius: 2px; }
-        .user { background: #007bff; color: white; align-self: flex-end; border-bottom-right-radius: 2px; }
+        .user { background: #f70606; color: white; align-self: flex-end; border-bottom-right-radius: 2px; }
 
         /* Style link "Tại đây" màu đỏ gạch chân */
         .link-style { color: #b01116; font-weight: bold; text-decoration: underline; display: block; margin-top: 5px; }
 
         /* Vùng nút gợi ý */
         #suggestion-area { padding: 10px; background: white; border-top: 1px solid #eee; display: flex; gap: 8px; flex-wrap: wrap; }
-        .s-btn { border: 1px solid #007bff; color: #007bff; background: white; padding: 6px 12px; border-radius: 20px; cursor: pointer; font-size: 12px; transition: 0.2s; }
-        .s-btn:hover { background: #007bff; color: white; }
+        .s-btn { border: 1px solid #f70606; color: #f70606; background: white; padding: 6px 12px; border-radius: 20px; cursor: pointer; font-size: 12px; transition: 0.2s; }
+        .s-btn:hover { background: #f70606; color: white; }
 
         #input-area { padding: 15px; border-top: 1px solid #eee; background: white; display: flex; align-items: center; }
         input { flex: 1; border: 1px solid #ddd; border-radius: 20px; padding: 10px 15px; outline: none; font-size: 14px; }
-        input:focus { border-color: #007bff; }
+        input:focus { border-color: #f70606; }
         /* Định vị Logo Văn Lang ở góc phải */
 #vlu-logo {
     position: absolute;
@@ -108,7 +108,7 @@
     </div>
     <div id="input-area">
         <input type="text" id="user-input" placeholder="Nhập câu hỏi...">
-        <button onclick="sendMsg()" style="background:none; border:none; color:#007bff; cursor:pointer; font-size:20px; margin-left:10px;"><i class="fas fa-paper-plane"></i></button>
+        <button onclick="sendMsg()" style="background:none; border:none; color:#f70606; cursor:pointer; font-size:20px; margin-left:10px;"><i class="fas fa-paper-plane"></i></button>
     </div>
 </div>
 
